@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.example.originalcalculator.ui.main.CalculationMode" />
+
+        <variable
+            name="viewModel"
+            type="com.example.originalcalculator.ui.main.MainViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/result"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="bottom|end"
+            android:maxLines="1"
+            android:text="@{viewModel.text}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/common_text_huge"
+            android:textStyle="bold"
+            android:autoSizeTextType="uniform"
+            app:autoSizeMinTextSize="10sp"
+            app:layout_constraintBottom_toTopOf="@+id/buttons1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="1,111"/>
+
+
+        <LinearLayout
+            android:id="@+id/buttons1"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttons2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_button_right_gray"
+                android:text="@string/ac_button"
+                android:textSize="@dimen/common_text_large"
+                android:textColor="@color/black"
+                android:onClick="@{() -> viewModel.onAcButtonClicked()}"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_button_right_gray"
+                android:text="@string/plus_minus_button"
+                android:textSize="@dimen/common_text_large"
+                android:textColor="@color/black"
+                android:onClick="@{() -> viewModel.onPlusMinusButtonClicked()}"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_button_right_gray"
+                android:text="@string/percent_button"
+                android:textSize="@dimen/common_text_large"
+                android:textColor="@color/black"
+                android:onClick="@{() -> viewModel.onPercentButtonClicked()}"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@{viewModel.calculationMode == CalculationMode.DIVISION ? @drawable/round_button_white : @drawable/round_button_orange}"
+                android:text="@string/division_button"
+                android:textSize="@dimen/common_text_large"
+                android:textColor="@{viewModel.calculationMode == CalculationMode.DIVISION ? @color/orange : @color/white}"
+                android:onClick="@{() -> viewModel.onDivisionButtonClicked()}"
+                tools:background="@drawable/round_button_orange"
+                tools:textColor="@color/white"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/buttons2"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttons3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_button_gray"
+                android:text="@string/number_button7"
+                android:textSize="@dimen/common_text_large"
+                android:textColor="@color/white"
+                android:onClick="@{() -> viewModel.onNumberButtonClicked(7)}"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_button_gray"
+                android:text="@string/number_button8"
+                android:textSize="@dimen/common_text_large"
+                android:textColor="@color/white"
+                android:onClick="@{() -> viewModel.onNumberButtonClicked(8)}"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_button_gray"
+                android:text="@string/number_button9"
+                android:textSize="@dimen/common_text_large"
+                android:textColor="@color/white"
+                android:onClick="@{() -> viewModel.onNumberButtonClicked(9)}"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@{viewModel.calculationMode == CalculationMode.MULTIPLICATION ? @drawable/round_button_white : @drawable/round_button_orange}"
+                android:text="@string/multiplication_button"
+                android:textSize="@dimen/common_text_large"
+                android:textColor="@{viewModel.calculationMode == CalculationMode.MULTIPLICATION ? @color/orange : @color/white}"
+                android:onClick="@{() -> viewModel.onMultiplicationButtonClicked()}"
+                tools:background="@drawable/round_button_orange"
+                tools:textColor="@color/white"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/buttons3"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttons4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_button_gray"
+                android:text="@string/number_button4"
+                android:textSize="@dimen/common_text_large"
+                android:textColor="@color/white"
+                android:onClick="@{() -> viewModel.onNumberButtonClicked(4)}"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_button_gray"
+                android:text="@string/number_button5"
+                android:textSize="@dimen/common_text_large"
+                android:textColor="@color/white"
+                android:onClick="@{() -> viewModel.onNumberButtonClicked(5)}"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_button_gray"
+                android:text="@string/number_button6"
+                android:textSize="@dimen/common_text_large"
+                android:textColor="@color/white"
+                android:onClick="@{() -> viewModel.onNumberButtonClicked(6)}"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@{viewModel.calculationMode == CalculationMode.MINUS ? @drawable/round_button_white : @drawable/round_button_orange}"
+                android:text="@string/minus_button"
+                android:textSize="@dimen/common_text_large"
+                android:textColor="@{viewModel.calculationMode == CalculationMode.MINUS ? @color/orange : @color/white}"
+                android:onClick="@{() -> viewModel.onMinusButtonClicked()}"
+                tools:background="@drawable/round_button_orange"
+                tools:textColor="@color/white"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/buttons4"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/buttons5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_button_gray"
+                android:text="@string/number_button1"
+                android:textSize="@dimen/common_text_large"
+                android:textColor="@color/white"
+                android:onClick="@{() -> viewModel.onNumberButtonClicked(1)}"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_button_gray"
+                android:text="@string/number_button2"
+                android:textSize="@dimen/common_text_large"
+                android:textColor="@color/white"
+                android:onClick="@{() -> viewModel.onNumberButtonClicked(2)}"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_button_gray"
+                android:text="@string/number_button3"
+                android:textSize="@dimen/common_text_large"
+                android:textColor="@color/white"
+                android:onClick="@{() -> viewModel.onNumberButtonClicked(3)}"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@{viewModel.calculationMode == CalculationMode.PLUS ? @drawable/round_button_white : @drawable/round_button_orange}"
+                android:text="@string/plus_button"
+                android:textSize="@dimen/common_text_large"
+                android:textColor="@{viewModel.calculationMode == CalculationMode.PLUS ? @color/orange : @color/white}"
+                android:onClick="@{() -> viewModel.onPlusButtonClicked()}"
+                tools:background="@drawable/round_button_orange"
+                tools:textColor="@color/white"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/buttons5"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="160dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/ellipse_button_gray"
+                android:text="@string/number_button0"
+                android:textSize="@dimen/common_text_large"
+                android:textColor="@color/white"
+                android:onClick="@{() -> viewModel.onNumberButtonClicked(0)}"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_button_gray"
+                android:text="@string/decimal_point_button"
+                android:textSize="@dimen/common_text_large"
+                android:textColor="@color/white"
+                android:onClick="@{() -> viewModel.onDecimalPointButtonClicked()}"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/round_button_orange"
+                android:text="@string/equal_button"
+                android:textSize="@dimen/common_text_large"
+                android:textColor="@color/white"
+                android:onClick="@{() -> viewModel.onEqualButtonClicked()}"/>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

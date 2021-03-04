@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">OriginalCalculator</string>
+
+    <string name="ac_button">AC</string>
+    <string name="plus_minus_button">+/-</string>
+    <string name="percent_button">%</string>
+    <string name="division_button">÷</string>
+    <string name="multiplication_button">×</string>
+    <string name="minus_button">-</string>
+    <string name="plus_button">+</string>
+    <string name="equal_button">=</string>
+    <string name="decimal_point_button">.</string>
+    <string name="number_button0">0</string>
+    <string name="number_button1">1</string>
+    <string name="number_button2">2</string>
+    <string name="number_button3">3</string>
+    <string name="number_button4">4</string>
+    <string name="number_button5">5</string>
+    <string name="number_button6">6</string>
+    <string name="number_button7">7</string>
+    <string name="number_button8">8</string>
+    <string name="number_button9">9</string>
+</resources>
